@@ -21,7 +21,7 @@
         </div>
       </div>
       
-       <div class="option-field"  *ngIf="offer.payment_type == 'Cash'">
+       <div class="option-field"  *ngIf="offer.payment_type">
         <div class="control-field">
           <mat-form-field  class="cs-input">
             <input matInput placeholder="Points Request Type" name="payment_type" [(ngModel)] = "offer.payment_type" #payment_type="ngModel" readonly>
@@ -32,7 +32,7 @@
       <div class="option-field"  >
         <div class="control-field">
             <mat-form-field class="cs-input">
-                <input placeholder="{{offer.payment_type== 'gift' ? 'Estimate Delivery' : 'Transfer'}} Date"  class="h46" [(ngModel)]="offer.estimated_date" (click)="openDatePicker(picker)" [min]="date1" name="estimated_date" matInput  [matDatepicker]="picker" required >
+                <input placeholder="{{offer.payment_type== 'gift' ? 'Estimate Delivery' : 'Transfer'}} Date"  class="h46" [(ngModel)]="offer.transfer_date" (click)="openDatePicker(picker)" [min]="date1" name="transfer_date" matInput  [matDatepicker]="picker" required >
                 <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
               </mat-form-field>  
@@ -42,6 +42,14 @@
           </mat-form-field> -->
         </div>
       </div>
+      <div class="option-field" >
+        <div class="control-field">
+          <mat-form-field  class="cs-input">
+            <input matInput placeholder="Transaction ID" name="transaction_id" [(ngModel)] = "offer.transaction_id" #transaction_id="ngModel" >
+          </mat-form-field>
+        </div>
+      </div>
+
       
       <div class="option-field mt15"  >
         <div class="control-field">

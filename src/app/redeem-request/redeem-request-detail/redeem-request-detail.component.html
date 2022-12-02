@@ -383,9 +383,13 @@
                   </ul>
                   <ul>
                     
-                    <li *ngIf="getData.payment_type != 'Gift'">
+                    <li *ngIf="getData.payment_type == 'Paytm' || getData.payment_type == 'Google Pay' || getData.payment_type == 'PhonePe' " >
                       <p>Points Transfer Mobile No.</p>
                       <span>{{!getData.payment_number ? 'N/A' : getData.payment_number}}</span>
+                    </li>
+                    <li *ngIf="getData.payment_type == 'UPI ID'">
+                      <p>UPI ID</p>
+                      <span>{{getData.upi_id}}</span>
                     </li>
                     <li *ngIf="getData.payment_type == 'Gift'">
                       <p>Shipping Address</p>
@@ -406,21 +410,34 @@
                   </ul>
                   <ul>
                    
-                    <li *ngIf="getData.estimated_date != null">
+                    <li *ngIf="getData.transfer_date != '0000-00-00'">
                       <p> Points Transfer Date</p>
-                      <span>{{getData.estimated_date | date : 'dd MMM yyyy'}}</span>
+                      <span>{{getData.transfer_date | date : 'dd MMM yyyy'}}</span>
+                    </li>
+                    <li  *ngIf="getData.transaction_id">
+                      <p>Transaction ID</p>
+                      <span>{{getData.transaction_id}}</span>
                     </li>
                     <li  *ngIf="getData.receive_remark && getData.receive_status=='Received'">
                       <p>Receiving Date</p>
                       <span>{{getData.received_date | date : 'dd MMM yyyy'}}</span>
                     </li>
+                   
+                  
+                  </ul>
+
+                  <ul>
+                    <li  *ngIf="getData.shipping_information">
+                      <p>Transfer Remark</p>
+                      <span>{{getData.shipping_information}}</span>
+                    </li>
+                  </ul>
+                  <ul>
                     <li  *ngIf="getData.receive_remark && getData.receive_status=='Received'">
                       <p>Receiving Remark</p>
                       <span>{{getData.receive_remark}}</span>
                     </li>
-                  </ul>
-                  <ul *ngIf="getData.reject_reason && getData.gift_status=='Reject' ">
-                    <li>
+                    <li *ngIf="getData.reject_reason && getData.gift_status=='Reject' ">
                       <p>Reject Of Reason</p>
                       <span>{{getData.reject_reason}}</span>
                     </li>

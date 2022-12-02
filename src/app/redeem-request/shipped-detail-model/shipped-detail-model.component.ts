@@ -43,7 +43,9 @@ export class ShippedDetailModelComponent implements OnInit {
     {
      
       this.offer.created_by=this.db.datauser.id;
-      this.offer.estimated_date = this.offer.estimated_date  ? this.db.pickerFormat(this.offer.estimated_date) : '';
+      // this.offer.estimated_date = this.offer.estimated_date  ? this.db.pickerFormat(this.offer.estimated_date) : '';
+      this.offer.transfer_date = this.offer.transfer_date  ? this.db.pickerFormat(this.offer.transfer_date) : '';
+
       this.db.post_rqst( { 'shipped' : this.offer }, 'offer/shippedInfo')
       .subscribe( d => {
         this.savingData = false;
